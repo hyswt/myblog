@@ -13,4 +13,18 @@
         <tag>学习教程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Valine评论系统</title>
+    <url>/2024/09/12/Valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F/</url>
+    <content><![CDATA[<h2 id="把Giscus评论改为Valine"><a href="#把Giscus评论改为Valine" class="headerlink" title="把Giscus评论改为Valine"></a>把Giscus评论改为Valine</h2><blockquote>
+<p>参考链接<a href="https://lorrlai.github.io/2021/12/18/20211217-ping-lun-gong-neng-tian-jia/">hexo 改为valine</a></p>
+<p>主要是之前的Giscus需要github账号登陆，而且每次加载都卡卡的，这个比之前的舒服多了</p>
+<p>而且可以自定义表情，不过我没设置用的默认的，想要设置的具体<a href="https://valine.js.org/emoji.html">参考这个</a>，<a href="https://github.com/GamerNoTitle/Valine-Magic">更多表情包设置</a>，</p>
+<p>还有个问题就是最新评论在首页报错，不知道什么原因，我给关了，以后有解决办法再加回来</p>
+</blockquote>
+<h3 id="最后感谢教程"><a href="#最后感谢教程" class="headerlink" title="最后感谢教程"></a>最后<a href="https://lorrlai.github.io/2021/12/18/20211217-ping-lun-gong-neng-tian-jia/">感谢教程</a></h3>]]></content>
+      <tags>
+        <tag>学习教程</tag>
+      </tags>
+  </entry>
 </search>
