@@ -27,4 +27,32 @@
         <tag>学习教程</tag>
       </tags>
   </entry>
+  <entry>
+    <title>vscdoe+cmake+opencv显示图片</title>
+    <url>/2024/10/03/vscdoe-cmake-opencv%E6%98%BE%E7%A4%BA%E5%9B%BE%E7%89%87/</url>
+    <content><![CDATA[<blockquote>
+<p><strong><a href="https://www.cnblogs.com/xiyin/p/16618245.html">参考教程</a>是这个，不过有几处不同,我用的是<a href="https://opencv.org/releases/">opencv4.80</a>，现在已经出到4.10了，<a href="https://cmake.org/download/">cmake是3.28</a>，前提是你的</strong></p>
+<p><strong>opencv和cmake下载好然后环境已经配好，这些教程网上都有，我就不写了，编译器可以使用msys2进行下载这个教程</strong></p>
+<p><strong>很详细</strong></p>
+</blockquote>
+<p><strong>我用的编译器是这个，用的参考教程的编译器老是报错就换成这个了</strong></p>
+<p><img src="/images/gcc.jpg" alt="编译器"></p>
+<h2 id="vscode要装的插件如下"><a href="#vscode要装的插件如下" class="headerlink" title="vscode要装的插件如下"></a>vscode要装的插件如下</h2><p><img src="/images/tools.jpg" alt="插件"></p>
+<blockquote>
+<p><strong>opencv的环境一定要按照我给的参考教程配置，不然会报错。</strong></p>
+</blockquote>
+<h2 id="CMakeLists-txt-配置"><a href="#CMakeLists-txt-配置" class="headerlink" title="CMakeLists.txt 配置"></a>CMakeLists.txt 配置</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">cmake_minimum_required(VERSION 3.5.0)</span><br><span class="line">project(opencv VERSION 0.1.0 LANGUAGES C CXX)</span><br><span class="line"></span><br><span class="line">add_executable(opencv main.cpp)</span><br><span class="line"></span><br><span class="line">include(CTest)</span><br><span class="line">enable_testing()</span><br><span class="line">find_package(OpenCV REQUIRED)</span><br><span class="line">include_directories($&#123;OpenCV_INCLUDE_DIRS&#125;)</span><br><span class="line">target_link_libraries(opencv $&#123;OpenCV_LIBS&#125;)</span><br><span class="line">set(CPACK_PROJECT_NAME $&#123;PROJECT_NAME&#125;)</span><br><span class="line">set(CPACK_PROJECT_VERSION $&#123;PROJECT_VERSION&#125;)</span><br><span class="line">include(CPack)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="main-cpp程序"><a href="#main-cpp程序" class="headerlink" title="main.cpp程序"></a>main.cpp程序</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;opencv2/core.hpp&gt;</span><br><span class="line">#include &lt;opencv2/highgui.hpp&gt;</span><br><span class="line">#include &lt;opencv2/imgcodecs.hpp&gt;</span><br><span class="line">using namespace cv;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    // 指定图片路径</span><br><span class="line">    string imagePath = &quot;D:/Users/huang/Desktop/opencv_demo/1.jpg&quot;;  // 替换为你的图片路径</span><br><span class="line">  </span><br><span class="line">    // 输出图片路径以确认是否正确</span><br><span class="line">    cout &lt;&lt; &quot;Loading image from: &quot; &lt;&lt; imagePath &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    Mat image = imread(imagePath, IMREAD_COLOR);  // 读取文件</span><br><span class="line"></span><br><span class="line">    if (image.empty()) &#123;  // 检查图像是否成功加载</span><br><span class="line">        cout &lt;&lt; &quot;Could not open or find the image&quot; &lt;&lt; endl;</span><br><span class="line">        return -1;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    namedWindow(&quot;Display window&quot;, WINDOW_AUTOSIZE);  // 创建窗口用于显示</span><br><span class="line">    imshow(&quot;Display window&quot;, image);  // 在窗口中显示图像</span><br><span class="line">    waitKey(0);  // 等待按键按下</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="编译运行"><a href="#编译运行" class="headerlink" title="编译运行"></a>编译运行</h2><p>到这里编译运行大概率会报错，是因为<strong>缺少由于找不到qt6core.dll,无法继续执行代码，</strong>大概率是这个原因，这时候就要用到msys2</p>
+<p>来安装qt6了</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">pacman -S mingw-w64-x86_64-qt6</span><br></pre></td></tr></table></figure>
+
+<p>安装完之后把 <code>D:\msys2\mingw64\include\qt6</code>这个路径添加到环境变量，这时候再编译运行图片就出来了</p>
+]]></content>
+      <tags>
+        <tag>cmake c++</tag>
+      </tags>
+  </entry>
 </search>
